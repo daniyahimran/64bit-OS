@@ -1,8 +1,9 @@
 #pragma once
-
+//interface file
 #include <stdint.h>
 #include <stddef.h>
 
+//setting collection of colours as a decimal of 8bit representation
 enum {
     PRINT_COLOR_BLACK = 0,
 	PRINT_COLOR_BLUE = 1,
@@ -22,6 +23,7 @@ enum {
 	PRINT_COLOR_WHITE = 15,
 };
 
+//initializing functions
 void print_clear();
 void print_char(char character);
 void print_str(char* string);
