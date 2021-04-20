@@ -1,8 +1,12 @@
 #include "print.h"
 
+//constant dimensions of video memory
 const static size_t NUM_COLS = 80;
 const static size_t NUM_ROWS = 25;
 
+//each character has 2 parts, an ascii code specifying the character
+//and an 8 bit number specifying the colour of the character
+//according to the pre-defined numbers in the header file
 struct Char {
     uint8_t character;
     uint8_t color;
@@ -13,6 +17,7 @@ size_t col = 0;
 size_t row = 0;
 uint8_t color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
 
+//to print empty row, null character and default colour
 void clear_row(size_t row) {
     struct Char empty = (struct Char) {
         character: ' ',
@@ -68,6 +73,7 @@ void print_char(char character) {
 
 void print_str(char* str) {
     for (size_t i = 0; 1; i++) {
+        //parsing entered string into individual characters
         char character = (uint8_t) str[i];
 
         if (character == '\0') {
