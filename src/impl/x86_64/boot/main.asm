@@ -60,6 +60,7 @@ check_long_mode:
 	mov al, "L"
 	jmp error
 
+; setting up connections and pointing of page table levels
 setup_page_tables:
 	mov eax, page_table_l3
 	or eax, 0b11 ; present, writable
@@ -114,6 +115,7 @@ error:
 	mov byte  [0xb800a], al
 	hlt
 
+; initilaizing the 4 level page table of standard size 4kB
 section .bss
 align 4096
 page_table_l4:
@@ -126,6 +128,7 @@ stack_bottom:
 	resb 4096 * 4
 stack_top:
 
+initializing Global Descriptor Table and setting it's size
 section .rodata
 gdt64:
 	dq 0 ; zero entry
